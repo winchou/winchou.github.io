@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.winchou.net/about/index.html</loc>
+    
+    <lastmod>2020-04-11T06:00:39.135Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.winchou.net/tutorial/tensorflow-tutorial-on-linux/</loc>
     
     <lastmod>2020-04-11T05:39:07.176Z</lastmod>
@@ -23,7 +30,7 @@
   </url>
   
   <url>
-    <loc>https://blog.winchou.net/about/index.html</loc>
+    <loc>https://blog.winchou.net/tags/index.html</loc>
     
     <lastmod>2019-03-01T05:52:24.000Z</lastmod>
     
@@ -31,13 +38,6 @@
   
   <url>
     <loc>https://blog.winchou.net/categories/index.html</loc>
-    
-    <lastmod>2019-03-01T05:52:24.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.winchou.net/tags/index.html</loc>
     
     <lastmod>2019-03-01T05:52:24.000Z</lastmod>
     
