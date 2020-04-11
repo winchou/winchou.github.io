@@ -2,44 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.winchou.net/categories/index.html</loc>
+    <loc>https://blog.winchou.net/2019/03/tutorial/tensorflow-tutorial-on-linux/</loc>
     
-    <lastmod>2019-03-01T05:52:24.601Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.winchou.net/tags/index.html</loc>
-    
-    <lastmod>2019-03-01T05:52:24.601Z</lastmod>
+    <lastmod>2020-04-11T04:49:23.598Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.winchou.net/about/index.html</loc>
+    <loc>https://blog.winchou.net/2018/12/tutorial/build-blog-with-hexo/</loc>
     
-    <lastmod>2019-03-01T05:52:24.600Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.winchou.net/2018/12/build-blog-with-hexo/</loc>
-    
-    <lastmod>2019-03-01T05:52:24.599Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.winchou.net/2019/03/tensorflow-tutorial-on-linux/</loc>
-    
-    <lastmod>2019-03-01T05:52:24.599Z</lastmod>
+    <lastmod>2020-04-11T04:49:20.165Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://blog.winchou.net/404.html</loc>
     
-    <lastmod>2019-03-01T05:52:24.594Z</lastmod>
+    <lastmod>2019-03-01T05:52:24.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.winchou.net/tags/index.html</loc>
+    
+    <lastmod>2019-03-01T05:52:24.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.winchou.net/about/index.html</loc>
+    
+    <lastmod>2019-03-01T05:52:24.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.winchou.net/categories/index.html</loc>
+    
+    <lastmod>2019-03-01T05:52:24.000Z</lastmod>
     
   </url>
   
