@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo,Github,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="码农孙连城" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="目录   1. 前言 2. Github Pages 使用 2.1. 注册主页 2.2. 分支管理 2.3. 自定义域名和HTTPS支持 2.4. CDN 加速 2.5. 集成百度统计 2.6. 让搜索引擎收录你的博客   3. Hexo 框架使用 3.1. 安装 Hexo 3.2. 生成 Hexo 项目 3.3. 启动项目 3.4. 创建新文章 3.5. 生成静态文件 3.6. 发布到 Gith">
+<meta name="keywords" content="Hexo,Github">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 Hexo 和 Github Pages 搭建个人博客">
+<meta property="og:url" content="https://blog.winchou.net/2018/12/build-blog-with-hexo/index.html">
+<meta property="og:site_name" content="码农孙连城">
+<meta property="og:description" content="目录   1. 前言 2. Github Pages 使用 2.1. 注册主页 2.2. 分支管理 2.3. 自定义域名和HTTPS支持 2.4. CDN 加速 2.5. 集成百度统计 2.6. 让搜索引擎收录你的博客   3. Hexo 框架使用 3.1. 安装 Hexo 3.2. 生成 Hexo 项目 3.3. 启动项目 3.4. 创建新文章 3.5. 生成静态文件 3.6. 发布到 Gith">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-01T05:52:24.599Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用 Hexo 和 Github Pages 搭建个人博客">
+<meta name="twitter:description" content="目录   1. 前言 2. Github Pages 使用 2.1. 注册主页 2.2. 分支管理 2.3. 自定义域名和HTTPS支持 2.4. CDN 加速 2.5. 集成百度统计 2.6. 让搜索引擎收录你的博客   3. Hexo 框架使用 3.1. 安装 Hexo 3.2. 生成 Hexo 项目 3.3. 启动项目 3.4. 创建新文章 3.5. 生成静态文件 3.6. 发布到 Gith">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blog.winchou.net/2018/12/build-blog-with-hexo/">
+
+
+
+
+
+  <title>使用 Hexo 和 Github Pages 搭建个人博客 | 码农孙连城</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">码农孙连城</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">长路漫漫,唯键作伴</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.winchou.net/2018/12/build-blog-with-hexo/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WinChou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="码农孙连城">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">使用 Hexo 和 Github Pages 搭建个人博客</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-01T16:34:48+08:00">
+                2018-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/基础教程/" itemprop="url" rel="index">
+                    <span itemprop="name">基础教程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>目录</p>
+<!-- TOC -->
+<ul>
+<li><a href="#1-前言">1. 前言</a></li>
+<li><a href="#2-github-pages-使用">2. Github Pages 使用</a><ul>
+<li><a href="#21-注册主页">2.1. 注册主页</a></li>
+<li><a href="#22-分支管理">2.2. 分支管理</a></li>
+<li><a href="#23-自定义域名和https支持">2.3. 自定义域名和HTTPS支持</a></li>
+<li><a href="#24-cdn-加速">2.4. CDN 加速</a></li>
+<li><a href="#25-集成百度统计">2.5. 集成百度统计</a></li>
+<li><a href="#26-让搜索引擎收录你的博客">2.6. 让搜索引擎收录你的博客</a></li>
+</ul>
+</li>
+<li><a href="#3-hexo-框架使用">3. Hexo 框架使用</a><ul>
+<li><a href="#31-安装-hexo">3.1. 安装 Hexo</a></li>
+<li><a href="#32-生成-hexo-项目">3.2. 生成 Hexo 项目</a></li>
+<li><a href="#33-启动项目">3.3. 启动项目</a></li>
+<li><a href="#34-创建新文章">3.4. 创建新文章</a></li>
+<li><a href="#35-生成静态文件">3.5. 生成静态文件</a></li>
+<li><a href="#36-发布到-github-pages">3.6. 发布到 Github Pages</a></li>
+<li><a href="#37-创建发布撤销草稿">3.7. 创建、发布、撤销草稿</a></li>
+<li><a href="#38-删除文章">3.8. 删除文章</a></li>
+<li><a href="#39-创建-sitemapxml">3.9. 创建 sitemap.xml</a></li>
+</ul>
+</li>
+<li><a href="#4-next-主题配置">4. NexT 主题配置</a><ul>
+<li><a href="#41-安装主题">4.1. 安装主题</a></li>
+<li><a href="#42-新建标签分类页面">4.2. 新建标签/分类页面</a></li>
+<li><a href="#43-安装-rss-插件">4.3. 安装 RSS 插件</a></li>
+<li><a href="#44-安装-gitalk-评论系统">4.4. 安装 gitalk 评论系统</a></li>
+<li><a href="#45-博客置顶">4.5. 博客置顶</a></li>
+</ul>
+</li>
+<li><a href="#5-常见问题">5. 常见问题</a><ul>
+<li><a href="#51-debuglog-太大导致-deploy-失败">5.1. debug.log 太大导致 deploy 失败</a></li>
+</ul>
+</li>
+<li><a href="#6-站长工具">6. 站长工具</a></li>
+<li><a href="#7-参考文档">7. 参考文档</a></li>
+</ul>
+<!-- /TOC -->
+<h1><span id="1-前言">1. 前言</span></h1><p>常见的博客方案有以下几种:</p>
+<ol>
+<li>在 CSDN, cnblogs, 简书等博客平台注册自己的博客主页。<ul>
+<li><strong>优点</strong>: 功能完备，无成本，技术门槛低，具有社交属性。</li>
+<li><strong>缺点</strong>: 可定制性差，迁移成本高。</li>
+</ul>
+</li>
+<li>购买虚拟主机和域名， 利用 <code>WordPress</code> 等开源工具搭建博客。<ul>
+<li><strong>优点</strong>是自由度高</li>
+<li><strong>缺点</strong>是技术门槛高，购买虚拟主机和域名长期来看也要不小开销。如果虚拟主机是在国内，还需要进行备案。</li>
+</ul>
+</li>
+<li>利用 <code>Github Pages</code> 结合 <code>Hexo</code> / <code>Jekyl</code>l 等博客生成工具搭建。<ul>
+<li><strong>优点</strong>是没有虚拟主机和域名的开销，具备一定的可定制性，基于 <code>Github</code> 这个最大的程序员社交平台。</li>
+<li><strong>缺点</strong>是博客地址在国外,访问速度较慢，这点可以通过CDN进行加速。</li>
+</ul>
+</li>
+</ol>
+<p>综合考虑，我选择第三种方案来搭建自己的技术博客。Github Pages 常用的博客生成工具有：</p>
+<ul>
+<li><a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a></li>
+<li><a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a></li>
+<li><a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a></li>
+</ul>
+<h1><span id="2-github-pages-使用">2. Github Pages 使用</span></h1><h2><span id="21-注册主页">2.1. 注册主页</span></h2><p>请参考 <a href="https://pages.github.com/" target="_blank" rel="noopener">Github Pages 官网</a> 进行注册。</p>
+<h2><span id="22-分支管理">2.2. 分支管理</span></h2><p>基于安全方面的考虑， <code>Github</code> 上只保留 <code>master</code> 分支用于发布。博客的源码和主题源码保存在 <code>Gitlab</code> 私有仓库和 <code>群晖NAS</code> 中的 <code>Gitlab</code> 仓库， 源码仓库分支为 <code>hexo</code>。</p>
+<h2><span id="23-自定义域名和https支持">2.3. 自定义域名和HTTPS支持</span></h2><p>请参考 </p>
+<ol>
+<li><a href="https://juejin.im/post/5a71a4f9518825733a3105ac" target="_blank" rel="noopener">GitHub Pages自定义域名</a></li>
+<li><a href="https://likfe.com/2018/05/03/github-pages-custom-domains-support-https/" target="_blank" rel="noopener">GitHub Pages 对自定义域名支持 HTTPS</a></li>
+</ol>
+<h2><span id="24-cdn-加速">2.4. CDN 加速</span></h2><p>请参考 <a href="https://www.jianshu.com/p/ccc0cc8c14a0" target="_blank" rel="noopener">Github Pages + CDN全站加速</a></p>
+<p>另外，可以使用 <a href="http://tool.chinaz.com/speedtest.aspx" target="_blank" rel="noopener">站长之家 - 网站测速工具</a> 测试各省对你的博客的访问速度。</p>
+<h2><span id="25-集成百度统计">2.5. 集成百度统计</span></h2><p>集成 <code>百度统计</code> 可以帮助我们统计访客的数量和来源，便于我们分析和维护博客。</p>
+<p>请参考 <a href="http://theme-next.iissnan.com/getting-started.html#third-party-services" target="_blank" rel="noopener">NexT使用手册 - 百度统计</a></p>
+<h2><span id="26-让搜索引擎收录你的博客">2.6. 让搜索引擎收录你的博客</span></h2><p>博客发布之后，我们发现在 <code>Google</code>, <code>Baidu</code> 等搜索引擎中并不能检索到我们的博客，这是因为搜索引擎还没有收录我们的博客。以 <code>Google</code> 为例， 我们需要在 <a href="https://search.google.com/search-console" target="_blank" rel="noopener">Google Search Console</a> 中创建站点并提交 <code>sitemap.xml</code>。<code>sitemap.xml</code> 的生成方式可以参考下面的教程。</p>
+<p>当然，在流行网站 (如知乎、豆瓣等) 添加你的博客地址，也是让搜索引擎快速收录网站的有效方法。</p>
+<h1><span id="3-hexo-框架使用">3. Hexo 框架使用</span></h1><p>详细的 <code>Hexo</code> 教程请参考 <a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">Hexo 官方文档</a>, 还可以通过执行 <code>hexo help</code> 了解常用的命令。</p>
+<h2><span id="31-安装-hexo">3.1. 安装 Hexo</span></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+<h2><span id="32-生成-hexo-项目">3.2. 生成 Hexo 项目</span></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init [projectname]  <span class="comment"># projectname 是你的项目名称</span></span><br><span class="line">$ <span class="built_in">cd</span> [projectname]</span><br></pre></td></tr></table></figure>
+<p><code>hexo init</code> 命令会通过 git 从 <code>github.com/hexojs/hexo-starter</code> 下载文件初始化你创建的博客。</p>
+<h2><span id="33-启动项目">3.3. 启动项目</span></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server [-p port] [--debug] [--drafts]  <span class="comment"># 默认端口 4000</span></span><br></pre></td></tr></table></figure>
+<p>打开浏览器登录 <code>http://127.0.0.1:4000/</code> 即可看到生成的博客网站。如果是在本地，可以加上 <code>--debug</code> 参数，这样每次修改，只要刷新页面即可。</p>
+<h2><span id="34-创建新文章">3.4. 创建新文章</span></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [postname]  <span class="comment"># postname 是你的文章名称</span></span><br></pre></td></tr></table></figure>
+<p>这时你会发现 <code>source/_posts/</code> 目录下多了一个 <code>[postname].md</code> 文件， 这个文件就是编写文章内容的地方。</p>
+<h2><span id="35-生成静态文件">3.5. 生成静态文件</span></h2><p>写完文章，发布之前，需要生成静态文件，发布命令会将生成的静态文件发布到线上。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<h2><span id="36-发布到-github-pages">3.6. 发布到 Github Pages</span></h2><ol>
+<li><p>在 <code>Github -&gt; Settings -&gt; SSH and GPG keys</code> 中添加你的 ssh key 公钥</p>
+</li>
+<li><p>编辑 <strong>站点配置文件</strong> <code>_config.yml</code></p>
+</li>
+</ol>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">deploy</span>:</span><br><span class="line">    <span class="attribute">type</span>: git</span><br><span class="line">    <span class="attribute">repo</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:[yourname]/[yourname].github.io.git</span><br><span class="line">    <span class="attribute">branch</span>: master</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>执行发布命令</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>这时登录你的 Github Pages 主页看看博客是否发布成功了。</p>
+<h2><span id="37-创建-发布-撤销草稿">3.7. 创建、发布、撤销草稿</span></h2><p>有时候我们新建了文章，但是文章还没有写完，不想立刻发布，这时可以使用草稿功能。</p>
+<ol>
+<li>创建草稿</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new draft [postname]</span><br></pre></td></tr></table></figure>
+<p>这时会在 <code>source/_drafts/</code> 目录下新建 <code>[postname].md</code> 文件， 除了 <code>source/_posts</code>， <code>source</code> 下其他以 <code>_</code> 开头的目录下的资源在发布的时候都会被忽略。</p>
+<ol start="2">
+<li>发布草稿</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo publish draft [postname]</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>将发布的文章改为草稿， 只需将文件移到 <code>_drafts</code> 目录即可。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mv <span class="built_in">source</span>/_posts/[postname].md <span class="built_in">source</span>/_drafts/</span><br></pre></td></tr></table></figure>
+<h2><span id="38-删除文章">3.8. 删除文章</span></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ rm <span class="built_in">source</span>/_posts/[postname].md  <span class="comment"># postname 是删除的文章对应的文件</span></span><br><span class="line">$ hexo clean &amp;&amp; hexo g  <span class="comment"># 清理并重新生成静态文件</span></span><br></pre></td></tr></table></figure>
+<h2><span id="39-创建-sitemapxml">3.9. 创建 sitemap.xml</span></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-generator-sitemap --save</span><br><span class="line">$ npm install hexo-generator-baidu-sitemap --save</span><br></pre></td></tr></table></figure>
+<p>在 <strong>站点配置文件</strong> <code>_config.yml</code> 中添加</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># auto generate sitemap.xml</span></span><br><span class="line"><span class="symbol">Plugins:</span></span><br><span class="line">- hexo-generator-baidu-sitemap</span><br><span class="line">- hexo-generator-sitemap</span><br><span class="line"></span><br><span class="line"><span class="symbol">baidusitemap:</span></span><br><span class="line"><span class="symbol">    path:</span> baidusitemap.xml</span><br><span class="line"><span class="symbol">sitemap:</span></span><br><span class="line"><span class="symbol">    path:</span> sitemap.xml</span><br></pre></td></tr></table></figure>
+<p>执行 <code>hexo clean &amp;&amp; hexo g</code> 就可以在 <code>public</code> 目录下看到生成的 <code>sitemap.xml</code> 和 <code>baidusitemap.xml</code> 文件。</p>
+<p><strong>注意</strong>： 如果在搜索引擎控制台中你使用的是自定义的域名，记得将 <strong>站点配置文件</strong> <code>_config.xml</code> 中的 <code>url</code> 改成自定义的域名，否则在搜索引擎提交 <code>sitemap.xml</code> 是会报 <code>URL not allowed</code> 错误。</p>
+<h1><span id="4-next-主题配置">4. NexT 主题配置</span></h1><p>详细的 <code>NextT</code> 主题配置请参考 <a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT 使用文档</a>， 这里不做过多描述。</p>
+<h2><span id="41-安装主题">4.1. 安装主题</span></h2><ol>
+<li>安装主题</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ git submodule add https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>切换主题</li>
+</ol>
+<p>编辑 <strong>站点配置文件</strong> <code>_config.yml</code>， 将主题修改为 <code>next</code></p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># theme: landscape</span></span><br><span class="line">theme: <span class="keyword">next</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>重新启动博客</li>
+</ol>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">$</span> <span class="comment">hexo</span> <span class="comment">s</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">debug</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">drafts</span></span><br></pre></td></tr></table></figure>
+<h2><span id="42-新建标签分类页面">4.2. 新建标签/分类页面</span></h2><p>以新建 <code>标签页面</code> 为例， <code>分类页面</code> 类似。</p>
+<ol>
+<li>新建 <code>tags</code> 页面</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new page tags</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>编辑 <code>tags</code> 页面文件 <code>source/tags/index.md</code></li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">所有标签</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2018</span><span class="bullet">-11</span><span class="bullet">-30</span> <span class="number">02</span><span class="string">:09:20</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">"tags"</span></span><br><span class="line"><span class="attr">comments:</span> <span class="literal">false</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>编辑 <strong>主题配置文件</strong> <code>theme/next/_config.yml</code>, 添加 <code>tags</code> 到 <code>mennu</code> 中：</li>
+</ol>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">menu</span>:</span><br><span class="line">  home: /</span><br><span class="line">  archive<span class="variable">s:</span> /archives</span><br><span class="line">  <span class="keyword">tag</span><span class="variable">s:</span> /<span class="keyword">tags</span></span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong> 如果您有过使用 <code>WordPress</code> 的经验，就很容易误解 <code>Hexo</code> 的分类方式。<code>WordPress</code> 支持对一篇文章设置多个分类，而且这些分类可以是同级的，也可以是父子分类。但是 <code>Hexo</code> 不支持指定多个同级分类。下面的指定方法：</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">categories:</span><br><span class="line"><span class="bullet">- </span>Diary</span><br><span class="line"><span class="bullet">- </span>Life</span><br></pre></td></tr></table></figure>
+<p>会使分类 <code>Life</code> 成为 <code>Diary</code> 的子分类，而不是并列分类。因此，有必要为您的文章选择尽可能准确的分类。</p>
+<h2><span id="43-安装-rss-插件">4.3. 安装 RSS 插件</span></h2><ol>
+<li>安装 <code>hexo-generator-feed</code> 插件</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-generator-feed --save</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>编辑 <strong>主题配置文件</strong> <code>theme/next/_config.yml</code>，添加下面内容</li>
+</ol>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># RSS subscribe support</span></span><br><span class="line"><span class="symbol">plugin:</span></span><br><span class="line">- hexo-generator-feed</span><br><span class="line"></span><br><span class="line"><span class="meta"># Feed Atom</span></span><br><span class="line"><span class="symbol">feed:</span></span><br><span class="line"><span class="symbol">type:</span> atom</span><br><span class="line"><span class="symbol">path:</span> atom.xml</span><br><span class="line"><span class="symbol">limit:</span> <span class="number">20</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>执行 <code>hexo clean &amp;&amp; hexo g</code> 后重新生成博客文件。</li>
+</ol>
+<h2><span id="44-安装-gitalk-评论系统">4.4. 安装 gitalk 评论系统</span></h2><p>请参考 <a href="https://asdfv1929.github.io/2018/01/20/gitalk/" target="_blank" rel="noopener">Hexo NexT主题中集成gitalk评论系统</a></p>
+<h2><span id="45-博客置顶">4.5. 博客置顶</span></h2><p>请参考 <a href="http://wangwlj.com/2018/01/09/blog_pin_post/" target="_blank" rel="noopener">Hexo博客彻底解决置顶问题</a></p>
+<h1><span id="5-常见问题">5. 常见问题</span></h1><h2><span id="51-debuglog-太大导致-deploy-失败">5.1. debug.log 太大导致 deploy 失败</span></h2><p>如果长时间执行 <code>hexo s --debug</code>, <code>debug.log</code> 文件中会产生大量日志。<code>.gitignore</code> 默认是没有添加 <code>debug.log</code> 的。但 <code>debug.log</code> 超过 100MB, <code>hexo deploy</code> 会失败，即使清理掉 <code>debug.log</code>， 重新执行 <code>hexo g -d</code> 仍然报同样的错误。</p>
+<p>后来发现应该是 .deploy_git 目录下存在缓存</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mv .deploy_git .deploy_git_bak</span><br><span class="line">$ hexo g -d</span><br><span class="line">$ rm -rf .deploy_git_bak   <span class="comment"># 如果发布成功，可以删除备份文件</span></span><br></pre></td></tr></table></figure>
+<h1><span id="6-站长工具">6. 站长工具</span></h1><ol>
+<li>站长之家 - 网站测速工具: <a href="http://tool.chinaz.com/speedtest.aspx" target="_blank" rel="noopener">http://tool.chinaz.com/speedtest.aspx</a></li>
+<li>自动生成网站sitemap.xml: <a href="https://www.xml-sitemaps.com/" target="_blank" rel="noopener">https://www.xml-sitemaps.com/</a></li>
+</ol>
+<h1><span id="7-参考文档">7. 参考文档</span></h1><ol>
+<li><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">Hexo官方文档</a></li>
+<li><a href="https://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT主题主页</a></li>
+<li><a href="https://juejin.im/post/5acf02086fb9a028b92d8652" target="_blank" rel="noopener">Github Pages部署个人博客（Hexo篇）</a></li>
+<li><a href="https://asdfv1929.github.io/2018/01/20/gitalk/" target="_blank" rel="noopener">Hexo NexT主题中集成gitalk评论系统</a></li>
+<li><a href="https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/" target="_blank" rel="noopener">Configuring a publishing source for GitHub Pages</a></li>
+<li><a href="http://wangwlj.com/2018/01/09/blog_pin_post/" target="_blank" rel="noopener">Hexo博客彻底解决置顶问题</a></li>
+<li><a href="https://juejin.im/post/5a71a4f9518825733a3105ac" target="_blank" rel="noopener">GitHub Pages自定义域名</a></li>
+<li><a href="https://likfe.com/2018/05/03/github-pages-custom-domains-support-https/" target="_blank" rel="noopener">GitHub Pages 对自定义域名支持 HTTPS</a></li>
+<li><a href="https://www.jianshu.com/p/ccc0cc8c14a0" target="_blank" rel="noopener">Github Pages + CDN全站加速</a></li>
+<li><a href="http://tool.chinaz.com/speedtest.aspx" target="_blank" rel="noopener">站长之家 - 网站测速工具</a></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+          
+            <a href="/tags/Github/" rel="tag"># Github</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/tensorflow-tutorial-on-linux/" rel="prev" title="Linux 下 Tensorflow 基础教程">
+                Linux 下 Tensorflow 基础教程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">WinChou</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">1. 前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">2. Github Pages 使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">2.1. 注册主页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">2.2. 分支管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.</span> <span class="nav-text">2.3. 自定义域名和HTTPS支持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.</span> <span class="nav-text">2.4. CDN 加速</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.5.</span> <span class="nav-text">2.5. 集成百度统计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.6.</span> <span class="nav-text">2.6. 让搜索引擎收录你的博客</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">3. Hexo 框架使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.</span> <span class="nav-text">3.1. 安装 Hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.</span> <span class="nav-text">3.2. 生成 Hexo 项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.3.</span> <span class="nav-text">3.3. 启动项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.4.</span> <span class="nav-text">3.4. 创建新文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.5.</span> <span class="nav-text">3.5. 生成静态文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.6.</span> <span class="nav-text">3.6. 发布到 Github Pages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.7.</span> <span class="nav-text">3.7. 创建、发布、撤销草稿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.8.</span> <span class="nav-text">3.8. 删除文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.9.</span> <span class="nav-text">3.9. 创建 sitemap.xml</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">4. NexT 主题配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.1.</span> <span class="nav-text">4.1. 安装主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.2.</span> <span class="nav-text">4.2. 新建标签/分类页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.3.</span> <span class="nav-text">4.3. 安装 RSS 插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.4.</span> <span class="nav-text">4.4. 安装 gitalk 评论系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.5.</span> <span class="nav-text">4.5. 博客置顶</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">5. 常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.1.</span> <span class="nav-text">5.1. debug.log 太大导致 deploy 失败</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">6. 站长工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">7. 参考文档</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WinChou</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
