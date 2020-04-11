@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://blog.winchou.net/tutorial/tensorflow-tutorial-on-linux/</loc>
-    <lastmod>2020-04-11T05:39:07.176Z</lastmod>
+    <loc>https://blog.winchou.net/architecture/building-technology-center/</loc>
+    <lastmod>2020-04-11T08:01:47.090Z</lastmod>
   </url>  <url>
     <loc>https://blog.winchou.net/tutorial/build-blog-with-hexo/</loc>
-    <lastmod>2020-04-11T05:38:34.107Z</lastmod>
+    <lastmod>2020-04-11T07:49:35.318Z</lastmod>
+  </url>  <url>
+    <loc>https://blog.winchou.net/tutorial/tensorflow-tutorial-on-linux/</loc>
+    <lastmod>2020-04-11T05:39:07.176Z</lastmod>
   </url>
 </urlset>
