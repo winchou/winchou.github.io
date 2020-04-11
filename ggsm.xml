@@ -23,13 +23,6 @@
   </url>
   
   <url>
-    <loc>https://blog.winchou.net/tags/index.html</loc>
-    
-    <lastmod>2019-03-01T05:52:24.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://blog.winchou.net/about/index.html</loc>
     
     <lastmod>2019-03-01T05:52:24.000Z</lastmod>
@@ -38,6 +31,13 @@
   
   <url>
     <loc>https://blog.winchou.net/categories/index.html</loc>
+    
+    <lastmod>2019-03-01T05:52:24.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.winchou.net/tags/index.html</loc>
     
     <lastmod>2019-03-01T05:52:24.000Z</lastmod>
     
